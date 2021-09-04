@@ -5,6 +5,7 @@ const typeDefs = require("./src/schema");
 const resolvers = require("./src/resolvers");
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 const isAuthenticatedDirective = require("./src/schema/isAuthenticatedDirective");
+const loggingDirective = require("./src/schema/loggingDirective");
 const endpoint = '/graphql';
 
 const app = express();
@@ -21,6 +22,7 @@ let schema = makeExecutableSchema({
 });
 
 schema = isAuthenticatedDirective(schema, 'isAuthenticated');
+schema = loggingDirective(schema, 'loggingEnabled');
 
 const server = new ApolloServer({
   schema,

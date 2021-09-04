@@ -2,6 +2,9 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   directive @isAuthenticated on FIELD_DEFINITION
+  directive @loggingEnabled on FIELD_DEFINITION
+
+  scalar DateTime
 
   type User {
     id: Int!
@@ -21,20 +24,24 @@ const typeDefs = gql`
     arguments: String!
     context: String!
     returnValue: String!
-    startTime: Int!
-    endTime: Int!
+    startTime: DateTime!
+    endTime: DateTime!
     executionTime: Int!
   }
 
   type Query {
-    getCurrentUser: User @isAuthenticated
-    getUser(id: Int!): User @isAuthenticated
+    getCurrentUser: User @isAuthenticated @loggingEnabled
+    getUser(id: Int!): User @isAuthenticated @loggingEnabled
+
+    getResolverLog(id: Int!): ResolverLog @isAuthenticated
+    getResolverLogs: [ResolverLog] @isAuthenticated
   }
 
   type Mutation {
-    register(login: String!, email: String!, password: String!): String
-    login(login: String!, password: String!): String
-    updateCurrentUser(input: UserUpdateInput!): User @isAuthenticated
+    register(login: String!, email: String!, password: String!): String @loggingEnabled
+    login(login: String!, password: String!): String @loggingEnabled
+    updateCurrentUser(input: UserUpdateInput!): User @isAuthenticated @loggingEnabled
+    deleteUser(id: Int!): Boolean @isAuthenticated @loggingEnabled
   }
 `;
 

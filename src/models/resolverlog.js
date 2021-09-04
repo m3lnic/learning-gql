@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     arguments: DataTypes.STRING,
     context: DataTypes.STRING,
     returnValue: DataTypes.STRING,
-    startTime: DataTypes.INTEGER,
-    endTime: DataTypes.INTEGER,
+    startTime: DataTypes.DATE,
+    endTime: DataTypes.DATE,
     executionTime: DataTypes.INTEGER
   }, {
     sequelize,

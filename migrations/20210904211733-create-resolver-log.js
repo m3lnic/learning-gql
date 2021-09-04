@@ -21,10 +21,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       startTime: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DATE
       },
       endTime: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DATE
       },
       executionTime: {
         type: Sequelize.INTEGER
