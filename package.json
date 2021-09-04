@@ -1,0 +1,8 @@
+{
+  "name": "learning-gql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:m3lnic/learning-gql.git",
+  "author": "Melody Nicholls <melody.astrid.nicholls@gmail.com>",
+  "license": "MIT"
+}
