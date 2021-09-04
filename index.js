@@ -3,7 +3,6 @@ const { ApolloServer } = require("apollo-server-express");
 const jwt = require("express-jwt");
 const typeDefs = require("./src/schema");
 const resolvers = require("./src/resolvers");
-console.log(typeDefs, resolvers);
 const endpoint = '/graphql';
 
 const app = express();
