@@ -20,7 +20,6 @@ module.exports = async (_, { login, email, password}) => {
       expiresIn: "3m",
     });
   } catch (e) {
-    console.log(e);
     throw new ValidationError('There was an error creating this account. Please try a different username or email.');
   }
 }
