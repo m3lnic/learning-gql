@@ -15,6 +15,17 @@ const typeDefs = gql`
     email: String
   }
 
+  type ResolverLog {
+    id: Int!
+    name: String!
+    arguments: String!
+    context: String!
+    returnValue: String!
+    startTime: Int!
+    endTime: Int!
+    executionTime: Int!
+  }
+
   type Query {
     getCurrentUser: User @isAuthenticated
     getUser(id: Int!): User @isAuthenticated

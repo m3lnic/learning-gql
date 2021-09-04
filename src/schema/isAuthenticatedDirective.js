@@ -13,6 +13,7 @@ const isAuthenticatedDirective = (schema, directiveName) => {
       if (directive) {
         fieldConfig.resolve = async (source, args, context, info) => {
           const { user: userContext } = context;
+          console.log(JSON.stringify(info));
           
           const user = await User.findOne({
             where: {
