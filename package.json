@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "link-module-alias && nodemon index.js",
-    "migrate": "sequelize db:migrate"
+    "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
+    "createMigration": "sequelize migration:create --name"
   },
   "_moduleAliases": {
     "Models": "src/models",

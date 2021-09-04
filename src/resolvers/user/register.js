@@ -1,5 +1,6 @@
 const { ValidationError } = require("apollo-server-errors");
 const bcrypt = require("bcrypt");
+const jsonwebtoken = require("jsonwebtoken");
 const { validateEmail } = require("Helpers");
 const { User } = require("Models");
 
@@ -8,11 +9,18 @@ module.exports = async (_, { login, email, password}) => {
     throw new ValidationError('The email provided is invalid');
   }
 
-  const user = await User.create({
-    login,
-    email,
-    password: await bcrypt.hash(password, 10),
-  });
-
-  return 'pancake';
+  try {
+    const user = await User.create({
+      login,
+      email,
+      password: await bcrypt.hash(password, 10),
+    });
+  
+    return jsonwebtoken.sign({ id: user.id, login: user.login }, process.env.JWT_SECRET, {
+      expiresIn: "3m",
+    });
+  } catch (e) {
+    console.log(e);
+    throw new ValidationError('There was an error creating this account. Please try a different username or email.');
+  }
 }

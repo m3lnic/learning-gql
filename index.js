@@ -7,7 +7,7 @@ const endpoint = '/graphql';
 
 const app = express();
 const auth = jwt({
-    secret: 'bacon',
+    secret: process.env.JWT_SECRET,
     credentialsRequired: false,
     algorithms: ['HS256'],
 });

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "Models": ["src/models"],
+      "Resolvers": ["src/resolvers"],
+      "Helpers": ["src/helpers"]
+    }
+  }
+}
