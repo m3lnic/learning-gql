@@ -16,12 +16,15 @@
     "Helpers": "src/helpers"
   },
   "dependencies": {
+    "@graphql-tools/schema": "^8.2.0",
+    "@graphql-tools/utils": "^8.2.2",
     "apollo-server-express": "^3.3.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "graphql": "^15.5.2",
+    "graphql-tools": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "link-module-alias": "^1.2.0",
     "pg": "^8.7.1",
