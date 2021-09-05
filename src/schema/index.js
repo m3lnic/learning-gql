@@ -29,12 +29,56 @@ const typeDefs = gql`
     executionTime: Int!
   }
 
+  type Weapon {
+    id: Int!
+    name: String!
+    weaponStats: [WeaponStats]!
+    abilities: [Ability]!
+  }
+
+  type WeaponStats {
+    subAttackName: String
+    type: String!
+    range: Int!
+    strength: Int!
+    armourPiercing: Int!
+    damage: String!
+  }
+
+  input WeaponCreateInput {
+    name: String! 
+    weaponStats: [WeaponStatCreateInput!]!
+    abilities: [Int]
+  }
+
+  input WeaponStatCreateInput {
+    subAttackName: String
+    type: String!
+    range: Int!
+    strength: Int!
+    armourPiercing: Int!
+    damage: String!
+  }
+
+  type Ability {
+    id: Int!
+    name: String!
+    effect: String!
+  }
+
+  input AbilityCreateInput {
+    name: String!
+    effect: String!
+  }
+
   type Query {
     getCurrentUser: User @isAuthenticated @loggingEnabled
     getUser(id: Int!): User @isAuthenticated @loggingEnabled
 
     getResolverLog(id: Int!): ResolverLog @isAuthenticated
     getResolverLogs: [ResolverLog] @isAuthenticated
+
+    getWeapon(id: Int!): Weapon
   }
 
   type Mutation {
@@ -42,6 +86,10 @@ const typeDefs = gql`
     login(login: String!, password: String!): String @loggingEnabled
     updateCurrentUser(input: UserUpdateInput!): User @isAuthenticated @loggingEnabled
     deleteUser(id: Int!): Boolean @isAuthenticated @loggingEnabled
+
+    createWeapon(input: WeaponCreateInput!): Weapon
+
+    createAbility(input: AbilityCreateInput!): Ability
   }
 `;
 
