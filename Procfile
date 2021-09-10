@@ -1,2 +1,2 @@
-release: node_modules/sequelize db:migrate
+release: yarn migrate:live
 web: node ./index.js
