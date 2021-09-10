@@ -9,8 +9,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "yarn link-module-alias && nodemon index.js",
+    "start": "yarn link-module-alias && yarn migrate:live && nodemon index.js",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
+    "migrate:live": "sequelize db:migrate",
     "createMigration": "sequelize migration:create --name"
   },
   "_moduleAliases": {
