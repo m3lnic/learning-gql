@@ -10,6 +10,7 @@
   },
   "scripts": {
     "start": "yarn link-module-alias && yarn migrate:live && node index.js",
+    "build": "sequelize db:migrate --env production",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "migrate:live": "sequelize db:migrate",
     "createMigration": "sequelize migration:create --name"
