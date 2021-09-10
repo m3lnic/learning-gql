@@ -5,6 +5,9 @@
   "repository": "git@github.com:m3lnic/learning-gql.git",
   "author": "Melody Nicholls <melody.astrid.nicholls@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "npm": "6.14.13"
+  },
   "scripts": {
     "start": "yarn link-module-alias && yarn migrate:live && node index.js",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
