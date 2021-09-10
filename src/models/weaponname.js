@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'weaponId',
         as: 'abilities',
       });
+      this.belongsToMany(models.Unit, {
+        through: 'UnitWeapons',
+        foreignKey: 'weaponId',
+        as: 'units',
+      });
     }
   };
   WeaponName.init({

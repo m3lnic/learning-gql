@@ -9,16 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(65536)
       },
       arguments: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(65536)
       },
       context: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(65536)
       },
       returnValue: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(65536)
       },
       startTime: {
         type: Sequelize.DATE

@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'abilityId',
         as: 'weapons',
       });
+      this.belongsToMany(models.Unit, {
+        through: 'UnitAbilities',
+        foreignKey: 'abilityId',
+        as: 'units',
+      });
     }
   };
   Ability.init({

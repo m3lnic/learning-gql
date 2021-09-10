@@ -3,7 +3,7 @@ const abilityMutations = {
 };
 
 const abilityQueries = {
-
+  abilities: require('./abilities'),
 };
 
 module.exports = {

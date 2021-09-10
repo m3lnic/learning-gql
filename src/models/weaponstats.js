@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     weaponNameId: DataTypes.INTEGER,
     type: DataTypes.STRING,
     range: DataTypes.INTEGER,
-    strength: DataTypes.INTEGER,
+    strength: DataTypes.STRING,
     armourPiercing: DataTypes.INTEGER,
     damage: DataTypes.STRING
   }, {

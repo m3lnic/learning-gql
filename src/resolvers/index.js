@@ -1,6 +1,7 @@
 const { abilityMutations, abilityQueries } = require('./ability');
-const { userMutations, userQueries } = require('./user');
 const { loggingMutations, loggingQueries } = require('./logging');
+const { userMutations, userQueries } = require('./user');
+const { unitMutations, unitQueries } = require('./unit');
 const { weaponMutations, weaponQueries } = require('./weapons');
 const scalars = require('./scalars');
 
@@ -10,12 +11,14 @@ module.exports = {
     ...abilityQueries,
     ...loggingQueries,
     ...userQueries,
+    ...unitQueries,
     ...weaponQueries,
   },
   Mutation: {
     ...abilityMutations,
     ...loggingMutations,
     ...userMutations,
+    ...unitMutations,
     ...weaponMutations,
   },
 }

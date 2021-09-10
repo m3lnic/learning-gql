@@ -17,7 +17,7 @@ module.exports = async (_, { input: {
     });
   }
 
-  await weaponStats.map(async ({
+  await Promise.all(weaponStats.map(async ({
     subAttackName = null,
     type,
     range,
@@ -25,7 +25,7 @@ module.exports = async (_, { input: {
     armourPiercing,
     damage,
   }) => {
-    const value = await WeaponStats.create({
+    await WeaponStats.create({
       subAttackName,
       weaponNameId: weaponName?.id,
       type,
@@ -34,13 +34,12 @@ module.exports = async (_, { input: {
       armourPiercing,
       damage,
     });
-    console.log(value)
-  })
+  }));
 
-  await abilities.map(async (value) => {
+  await Promise.all(abilities.map(async (value) => {
     const ability = await Ability.findOne({ where: { id: value }});
-    return weaponName.addAbility(ability);
-  })
+    await weaponName.addAbility(ability);
+  }));
 
   return WeaponName.findOne({
     where: {

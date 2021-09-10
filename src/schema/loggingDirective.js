@@ -20,7 +20,11 @@ const loggingDirective = (schema, directiveName) => {
           const endTime = new Date();
           const { fieldName, variableValues } = info;
 
-          const resolved = await ResolverLog.create({
+          if (variableValues?.password) {
+            delete variableValues.password;
+          }
+
+          await ResolverLog.create({
             name: fieldName,
             arguments: JSON.stringify(variableValues) ?? '',
             context: JSON.stringify(context) ?? '',
@@ -29,7 +33,6 @@ const loggingDirective = (schema, directiveName) => {
             endTime,
             executionTime: Math.ceil(t1 - t0),
           });
-          console.log(resolved);
 
           return resolvedValue;
         }

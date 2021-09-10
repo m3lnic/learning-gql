@@ -4,6 +4,7 @@ const weaponMutations = {
 
 const weaponQueries = {
   getWeapon: require('./getWeapon'),
+  weapons: require('./weapons'),
 };
 
 module.exports = {

@@ -4,9 +4,12 @@
   "main": "index.js",
   "repository": "git@github.com:m3lnic/learning-gql.git",
   "author": "Melody Nicholls <melody.astrid.nicholls@gmail.com>",
+  "engines": {
+    "node": "14.17.3"
+  },
   "license": "MIT",
   "scripts": {
-    "start": "link-module-alias && nodemon index.js",
+    "start": "yarn link-module-alias && nodemon index.js",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "createMigration": "sequelize migration:create --name"
   },

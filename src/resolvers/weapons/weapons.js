@@ -1,14 +1,9 @@
 const { WeaponName } = require('Models');
 
 module.exports = async (_, { id }, context) => {
-  const weapon = await WeaponName.findOne({
-    where: {
-      id,
-    },
+  const weapon = await WeaponName.findAll({
     include: ['weaponStats', 'abilities']
   });
-
-  console.log(JSON.stringify(weapon))
 
   return weapon;
 };
