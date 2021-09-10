@@ -8,8 +8,9 @@ const resolvers = require("./src/resolvers");
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 const isAuthenticatedDirective = require("./src/schema/isAuthenticatedDirective");
 const loggingDirective = require("./src/schema/loggingDirective");
-const endpoint = '/graphql';
+const cors = require('cors');
 
+const endpoint = '/graphql';
 
 const app = express();
 const auth = jwt({
@@ -18,6 +19,7 @@ const auth = jwt({
     algorithms: ['HS256'],
 });
 app.use(auth);
+app.use(cors());
 
 let schema = makeExecutableSchema({
   typeDefs,
