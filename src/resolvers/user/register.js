@@ -3,13 +3,27 @@ const bcrypt = require("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
 const { validateEmail } = require("Helpers");
 const { User } = require("Models");
+const generator = require('generate-password');
+const sgMail = require('@sendgrid/mail');
 
-module.exports = async (_, { login, email, password}) => {
+module.exports = async (_, { login, email }) => {
   if (!validateEmail(email)) {
     throw new ValidationError('The email provided is invalid');
   }
 
   try {
+    const password = generator.generate({ length: 32, numbers: true });
+
+    sgMail.setApiKey(process.env.TWILIO_SECRET);
+    await sgMail.send({
+      to: email,
+      from: 'battledex@technode.uk',
+      subject: 'New account password',
+      html: `
+        <p>Your new account has the password: <strong>${password}</strong></p>
+      `,
+    }).catch((err) => console.log(err));
+
     const user = await User.create({
       login,
       email,

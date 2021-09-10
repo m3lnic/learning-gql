@@ -117,7 +117,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    register(login: String!, email: String!, password: String!): String @isAuthenticated @loggingEnabled
+    register(login: String!, email: String!): String @loggingEnabled
     login(login: String!, password: String!): String @loggingEnabled
     updateCurrentUser(input: UserUpdateInput!): User @isAuthenticated @loggingEnabled
     deleteUser(id: Int!): Boolean @isAuthenticated @loggingEnabled
