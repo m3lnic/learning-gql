@@ -1,3 +1,5 @@
+require('module-alias/register');
+
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const jwt = require("express-jwt");
@@ -7,6 +9,7 @@ const { makeExecutableSchema } = require("@graphql-tools/schema");
 const isAuthenticatedDirective = require("./src/schema/isAuthenticatedDirective");
 const loggingDirective = require("./src/schema/loggingDirective");
 const endpoint = '/graphql';
+
 
 const app = express();
 const auth = jwt({
