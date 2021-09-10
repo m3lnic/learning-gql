@@ -1,4 +1,4 @@
-const { Unit, WeaponName, Ability } = require('models');
+const { Unit, WeaponName, Ability } = require('Models');
 
 module.exports = async (_, args, context) => {
   return Unit.findAll({ include: [
