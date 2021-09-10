@@ -9,7 +9,7 @@
     "npm": "6.14.15"
   },
   "scripts": {
-    "start": "yarn link-module-alias && yarn migrate:live && node index.js",
+    "start": "yarn link-module-alias && node index.js",
     "build": "sequelize db:migrate --env production",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "migrate:live": "sequelize db:migrate",
